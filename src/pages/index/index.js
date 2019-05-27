@@ -1,23 +1,21 @@
 import styles from "./index.scss";
 import "./index.pug"
-import layout from "./layout.pug";
-/*
-import createPage from "../../modules/createPage";
-*/
-let body = document.body,
-    pageWrapper = document.createElement('div'),
-    page = LayoutInWrapper(layout);
+import templatePage from "./template.pug";
 
-function LayoutInWrapper(layout) {
-    pageWrapper.innerHTML = layout;
+let body = document.body,
+    pageWrapper = document.querySelector('.page-wrapper'),
+    page = LayoutInWrapper(templatePage);
+
+function LayoutInWrapper(template) {
+    pageWrapper.innerHTML = template;
     return pageWrapper;
 }
 
 body.insertBefore(page, body.firstChild);
 
 if (module.hot) {
-    module.hot.accept('./layout.pug', () => {
-        page = LayoutInWrapper(layout);
+    module.hot.accept('./template.pug', () => {
+        page = LayoutInWrapper(templatePage);
         body.insertBefore(page, body.firstChild);
     });
 }
