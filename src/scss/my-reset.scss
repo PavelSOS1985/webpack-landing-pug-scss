@@ -4,3 +4,7 @@ p {
   -ms-hyphens: auto;
   hyphens: auto;
 }
+
+html, body {
+  overscroll-behavior: none;
+}
